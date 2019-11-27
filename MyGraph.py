@@ -5,8 +5,6 @@
 # @Link    : https://github.com/tomatoJr
 # @Version : 1.0.0
 
-import networkx as nx
-import matplotlib.pyplot as plt
 import random
 import math
 import collections
@@ -15,12 +13,10 @@ import time
 
 class MyGraph:
     def __init__(self, num=0, avg_degree=0, weight_rank=0):
-        # def __init__(self, num=0):
         self.graph = collections.defaultdict(dict)
         # make nodes
         for i in range(num):
             self.add_node(i)
-        # self.make_random_edges(num, avg_degree, weight_rank)
 
     def make_random_edges(self, num=0,  avg_degree=0, weight_rank=0):
         # make a weighted cycle

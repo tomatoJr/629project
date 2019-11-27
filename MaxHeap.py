@@ -5,16 +5,9 @@
 # @Link    : https://github.com/tomatoJr
 # @Version : 1.0.0
 
-import os
-import pymysql
-import os
 import random
 import time
 from collections import OrderedDict
-from tkinter import *
-from tkinter import ttk
-import xlrd
-import json
 import math
 
 

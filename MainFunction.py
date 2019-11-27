@@ -5,8 +5,6 @@
 # @Link    : https://github.com/tomatoJr
 # @Version : 1.0.0
 
-import networkx as nx
-import matplotlib.pyplot as plt
 import random
 import math
 import collections
@@ -60,7 +58,7 @@ def runDijkstra1(graph, src, dst):
     ans = Dijkstra1(graph, src, dst)
     endtime = (time.time())
     # print("Dijkstra runs in ", endtime-starttime, " s")
-    # print('max bandwidth: ', ans)
+    print('max bandwidth: ', ans)
 
 
 def runDijkstra2(graph, src, dst):
@@ -68,7 +66,8 @@ def runDijkstra2(graph, src, dst):
     ans = Dijkstra2(graph, src, dst)
     endtime = (time.time())
     # print("Dijkstra runs in ", endtime-starttime, " s")
-    # print('max bandwidth: ', ans)
+    print('max bandwidth: ', ans)
+    print('The running time of Modified Dijkstra’s algorithm without heap structure: ', end='')
     print(endtime-starttime)
 
 
@@ -77,7 +76,8 @@ def runDijkstraHeap(graph, src, dst):
     ans = DijkstraHeap(graph, src, dst)
     endtime = (time.time())
     # print("DijkstraHeap runs in ", endtime-starttime, " s")
-    # print('max bandwidth: ', ans)
+    print('max bandwidth: ', ans)
+    print('The running time of Modified Dijkstra’s algorithm using heap structure: ', end='')
     print(endtime-starttime)
 
 
@@ -86,7 +86,8 @@ def runKruskal(graph, src, dst):
     ans = Kruskal(graph, src, dst)
     endtime = (time.time())
     # print("Kruskal runs in ", endtime-starttime, " s")
-    # print('max bandwidth: ', ans)
+    print('max bandwidth: ', ans)
+    print('The running time of Modified Kruskal’s algorithm using heapsort: ', end='')
     print(endtime-starttime)
 
 
@@ -101,20 +102,14 @@ if __name__ == "__main__":
     print('In sparse graph:')
     sparse_graph = MyGraph(num_nodes, 6, weight_rank)
     sparse_graph.make_random_edges(num_nodes, 6, weight_rank)
-    print('The running time of Modified Dijkstra’s algorithm without heap structure: ', end='')
     runDijkstra2(sparse_graph, src, dst)
-    print('The running time of Modified Dijkstra’s algorithm using heap structure: ', end='')
     runDijkstraHeap(sparse_graph, src, dst)
-    print('The running time of Modified Kruskal’s algorithm using heapsort: ', end='')
     runKruskal(sparse_graph, src, dst)
 
     # # run the following code for dense graph test cases
     # print('In dense graph:')
     # dense_graph = MyGraph(num_nodes, 1000, weight_rank)
     # dense_graph.make_random_edges(num_nodes, 1000, weight_rank)
-    # print('The running time of Modified Dijkstra’s algorithm without heap structure: ', end='')
     # runDijkstra2(dense_graph, src, dst)
-    # print('The running time of Modified Dijkstra’s algorithm using heap structure: ', end='')
     # runDijkstraHeap(dense_graph, src, dst)
-    # print('The running time of Modified Kruskal’s algorithm using heapsort: ', end='')
     # runKruskal(dense_graph, src, dst)
