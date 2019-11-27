@@ -175,11 +175,17 @@ def Kruskal(graph, src, dst):
         heap.insert((u, v), w)
 
     heap.heapSort()
-    mst = MyGraph(graph.num_nodes(), 6, 1000)
-    while heap.H:
-        u, v = heap.H[len(heap.H)-1]
-        weight = heap.D[len(heap.D)-1]
-        heap.delete((u, v))
+
+    mst = MyGraph(graph.num_nodes())
+    index = len(heap.H)-1
+
+    while find(src) != find(dst):
+        # u, v = heap.H[len(heap.H)-1]
+        # weight = heap.D[len(heap.D)-1]
+        # heap.delete((u, v))
+        u, v = heap.H[index]
+        weight = heap.D[index]
+        index -= 1
 
         ur, vr = find(u), find(v)
         if ur != vr:

@@ -59,52 +59,62 @@ def runDijkstra1(graph, src, dst):
     starttime = (time.time())
     ans = Dijkstra1(graph, src, dst)
     endtime = (time.time())
-    print("Dijkstra runs in ", endtime-starttime, " s")
-    print('max bandwidth: ', ans)
+    # print("Dijkstra runs in ", endtime-starttime, " s")
+    # print('max bandwidth: ', ans)
 
 
 def runDijkstra2(graph, src, dst):
     starttime = (time.time())
     ans = Dijkstra2(graph, src, dst)
     endtime = (time.time())
-    print("Dijkstra runs in ", endtime-starttime, " s")
-    print('max bandwidth: ', ans)
+    # print("Dijkstra runs in ", endtime-starttime, " s")
+    # print('max bandwidth: ', ans)
+    print(endtime-starttime)
 
 
 def runDijkstraHeap(graph, src, dst):
     starttime = (time.time())
     ans = DijkstraHeap(graph, src, dst)
     endtime = (time.time())
-    print("DijkstraHeap runs in ", endtime-starttime, " s")
-    print('max bandwidth: ', ans)
+    # print("DijkstraHeap runs in ", endtime-starttime, " s")
+    # print('max bandwidth: ', ans)
+    print(endtime-starttime)
 
 
 def runKruskal(graph, src, dst):
     starttime = (time.time())
     ans = Kruskal(graph, src, dst)
     endtime = (time.time())
-    print("Kruskal runs in ", endtime-starttime, " s")
-    print('max bandwidth: ', ans)
+    # print("Kruskal runs in ", endtime-starttime, " s")
+    # print('max bandwidth: ', ans)
+    print(endtime-starttime)
 
 
 if __name__ == "__main__":
-    # sparse_graph = MyGraph(5000, 6, 1000)
-    # sparse_graph.make_random_edges(5000, 6, 1000)
+    num_nodes = 5000
+    weight_rank = 1000
+    src = int(random.random()*num_nodes)
+    dst = int(random.random()*num_nodes)
+    print('src:', src, ' dst:', dst)
 
-    dense_graph = MyGraph(5000, 1000, 1000)
-    dense_graph.make_random_edges(5000, 1000, 1000)
+    # run the following code for sparse graph test cases
+    print('In sparse graph:')
+    sparse_graph = MyGraph(num_nodes, 6, weight_rank)
+    sparse_graph.make_random_edges(num_nodes, 6, weight_rank)
+    print('The running time of Modified Dijkstra’s algorithm without heap structure: ', end='')
+    runDijkstra2(sparse_graph, src, dst)
+    print('The running time of Modified Dijkstra’s algorithm using heap structure: ', end='')
+    runDijkstraHeap(sparse_graph, src, dst)
+    print('The running time of Modified Kruskal’s algorithm using heapsort: ', end='')
+    runKruskal(sparse_graph, src, dst)
 
-    for i in range(5):
-        src = int(random.random()*5000)
-        dst = int(random.random()*5000)
-        print('src:', src, ' dst:', dst)
-
-        # # runDijkstra1(sparse_graph, src, dst)
-        # runDijkstra2(sparse_graph, src, dst)
-        # runDijkstraHeap(sparse_graph, src, dst)
-        # runKruskal(sparse_graph, src, dst)
-
-        # runDijkstra1(dense_graph, src, dst)
-        runDijkstra2(dense_graph, src, dst)
-        runDijkstraHeap(dense_graph, src, dst)
-        runKruskal(dense_graph, src, dst)
+    # # run the following code for dense graph test cases
+    # print('In dense graph:')
+    # dense_graph = MyGraph(num_nodes, 1000, weight_rank)
+    # dense_graph.make_random_edges(num_nodes, 1000, weight_rank)
+    # print('The running time of Modified Dijkstra’s algorithm without heap structure: ', end='')
+    # runDijkstra2(dense_graph, src, dst)
+    # print('The running time of Modified Dijkstra’s algorithm using heap structure: ', end='')
+    # runDijkstraHeap(dense_graph, src, dst)
+    # print('The running time of Modified Kruskal’s algorithm using heapsort: ', end='')
+    # runKruskal(dense_graph, src, dst)
